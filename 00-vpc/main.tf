@@ -1,15 +1,19 @@
 module "vpc" {
-    source = "git::https://github.com/lakshmipriyanka96/terraform_aws_vpc.git?ref=main"
-    vpc_cidr = var.cidr
-    project_name = var.project
-    Environment = var.Environment 
+    source = "git::https://github.com/daws-86s/terraform-aws-vpc.git?ref=main"
+    # VPC
+    vpc_cidr = var.vpc_cidr
+    project_name = var.project_name
+    environment = var.environment
     vpc_tags = var.vpc_tags
-    Igw_tags = var.Igw_tags
-    Pb_tags = var.Pb_tags
-    Pv_tags = var.Pv_tags
-    Db_tags = var.Db_tags
 
+    # public subnets
     public_subnet_cidrs = var.public_subnet_cidrs
+
+    # private subnets
     private_subnet_cidrs = var.private_subnet_cidrs
+
+    # database subnets
     database_subnet_cidrs = var.database_subnet_cidrs
+
+    is_peering_required = true
 }
